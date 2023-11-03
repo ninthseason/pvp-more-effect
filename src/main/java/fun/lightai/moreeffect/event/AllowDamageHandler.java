@@ -23,10 +23,6 @@ public class AllowDamageHandler implements ServerLivingEntityEvents.AllowDamage 
         if (entity.hasStatusEffect(More_effect.EFFECT_FALL_GUARD) && source.getType().msgId().equals("fall")) {
             return false;
         }
-        if (entity.hasStatusEffect(More_effect.EFFECT_ADAPTIVE_DEFENSE_CD)) {
-            entity.getActiveStatusEffects().remove(More_effect.EFFECT_ADAPTIVE_DEFENSE_CD);
-            entity.addStatusEffect(new StatusEffectInstance(More_effect.EFFECT_ADAPTIVE_DEFENSE_CD, 10*20));
-        }
         if (entity.hasStatusEffect(More_effect.EFFECT_REFLEX)) {
             if (source.getAttacker() != null) {
                 source.getAttacker().damage(entity.getDamageSources().cactus(), 2);
@@ -47,6 +43,10 @@ public class AllowDamageHandler implements ServerLivingEntityEvents.AllowDamage 
             if (((LivingEntity) source.getAttacker()).hasStatusEffect(More_effect.EFFECT_VAMPIRE)) {
                 ((LivingEntity) source.getAttacker()).setHealth(((LivingEntity) source.getAttacker()).getHealth() + 1);
             }
+        }
+        if (entity.hasStatusEffect(More_effect.EFFECT_ADAPTIVE_DEFENSE_CD)) {
+            entity.getActiveStatusEffects().remove(More_effect.EFFECT_ADAPTIVE_DEFENSE_CD);
+            entity.addStatusEffect(new StatusEffectInstance(More_effect.EFFECT_ADAPTIVE_DEFENSE_CD, 10*20));
         }
         return true;
     }

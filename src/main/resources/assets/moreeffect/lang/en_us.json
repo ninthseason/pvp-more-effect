@@ -20,5 +20,31 @@
   "effect.moreeffect.instant_kill": "Instant Kill",
   "effect.moreeffect.curtain": "Curtain",
   "effect.moreeffect.lucky_coin": "Lucky Coin",
-  "effect.moreeffect.peaceful": "Peaceful"
+  "effect.moreeffect.peaceful": "Peaceful",
+
+  "effect.moreeffect.esp.tips": "高亮其他玩家的位置",
+  "effect.moreeffect.phoenix.tips": "受到致死伤害会保留一滴血",
+  "effect.moreeffect.rage.tips": "延时死亡5秒，且进入霸体状态",
+  "effect.moreeffect.fall_guard.tips": "免疫摔落伤害",
+  "effect.moreeffect.blood_contract.tips": "提高血上限，你受到的伤害有30%概率翻倍",
+  "effect.moreeffect.adaptive_defense.tips": "免疫第一次伤害",
+  "effect.moreeffect.sun_bless.tips": "在白天受到更少伤害",
+  "effect.moreeffect.moon_bless.tips": "在晚上受到更少伤害",
+  "effect.moreeffect.reflex.tips": "反弹受到的伤害",
+  "effect.moreeffect.charge.tips": "速度越快伤害越高",
+  "effect.moreeffect.giant_slayer.tips": "对血量高于自己的敌人造成额外伤害",
+  "effect.moreeffect.last_stand.tips": "血量越低伤害越高",
+  "effect.moreeffect.flaming.tips": "攻击造成着火，使攻击者着火",
+  "effect.moreeffect.sneak.tips": "攻击减少血上限",
+  "effect.moreeffect.vampire.tips": "造成伤害回复自身",
+  "effect.moreeffect.instant_kill.tips": "每次攻击有概率秒杀对手",
+  "effect.moreeffect.curtain.tips": "击杀后隐身一段时间",
+  "effect.moreeffect.lucky_coin.tips": "你的伤害随机x0.5,x0.75,x1,x1.25,x1.5",
+  "effect.moreeffect.peaceful.tips": "敌人离你越远伤害越高",
+  "effect.minecraft.haste.tips": "急迫",
+  "effect.minecraft.speed.tips": "速度",
+  "effect.minecraft.fire_resistance.tips": "火焰免疫",
+  "effect.minecraft.jump_boost.tips": "跳跃提升",
+
+  "effect.moreeffect.random_effect.tips": "You get: "
 }

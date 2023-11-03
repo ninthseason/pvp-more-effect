@@ -1,5 +1,7 @@
 package fun.lightai.moreeffect;
 
+import fun.lightai.moreeffect.command.ClearEffectCommand;
+import fun.lightai.moreeffect.command.GiveRandomEffectCommand;
 import fun.lightai.moreeffect.effect.*;
 import fun.lightai.moreeffect.event.AfterKillHandler;
 import fun.lightai.moreeffect.event.AfterRespawnEvent;
@@ -7,6 +9,7 @@ import fun.lightai.moreeffect.event.AllowDamageHandler;
 import fun.lightai.moreeffect.event.AllowDeathHandler;
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.entity.event.v1.ServerEntityCombatEvents;
 import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
 import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
@@ -41,6 +44,17 @@ public class More_effect implements ModInitializer {
     public static final StatusEffect EFFECT_CURTAIN = new CurtainEffect();
     public static final StatusEffect EFFECT_LUCKY_COIN = new LuckyCoinEffect();
     public static final StatusEffect EFFECT_PEACEFUL = new PeacefulEffect();
+    public static final StatusEffect[] ALL_EFFECT = {
+            StatusEffect.byRawId(1),  // speed
+            StatusEffect.byRawId(3),  // 急迫
+            StatusEffect.byRawId(8),  // jump
+            StatusEffect.byRawId(12), // 防火
+            EFFECT_ESP, EFFECT_PHOENIX,
+            EFFECT_RAGE, EFFECT_FALL_GUARD, EFFECT_BLOOD_CONTRACT,
+            EFFECT_ADAPTIVE_DEFENSE, EFFECT_MOON_BLESS,
+            EFFECT_SUN_BLESS, EFFECT_REFLEX, EFFECT_CHARGE, EFFECT_GIANT_SLAYER,
+            EFFECT_LAST_STAND,EFFECT_FLAMING, EFFECT_SNEAK, EFFECT_VAMPIRE,
+            EFFECT_INSTANT_KILL, EFFECT_CURTAIN, EFFECT_LUCKY_COIN, EFFECT_PEACEFUL};
     @Override
     public void onInitialize() {
 
@@ -72,5 +86,9 @@ public class More_effect implements ModInitializer {
         ServerLivingEntityEvents.ALLOW_DAMAGE.register(new AllowDamageHandler());
         ServerEntityCombatEvents.AFTER_KILLED_OTHER_ENTITY.register(new AfterKillHandler());
         ServerPlayerEvents.AFTER_RESPAWN.register(new AfterRespawnEvent());
+
+
+        CommandRegistrationCallback.EVENT.register(new GiveRandomEffectCommand());
+        CommandRegistrationCallback.EVENT.register(new ClearEffectCommand());
     }
 }
