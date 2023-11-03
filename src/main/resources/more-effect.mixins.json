@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "fun.lightai.moreeffect.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "MixinMakeDamage",
+    "MixinTakeDamage"
+  ],
+  "client": [
+    "MixinMinecraftClient"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
