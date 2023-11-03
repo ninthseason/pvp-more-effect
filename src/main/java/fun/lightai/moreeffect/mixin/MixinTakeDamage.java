@@ -2,10 +2,17 @@ package fun.lightai.moreeffect.mixin;
 
 import fun.lightai.moreeffect.More_effect;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.render.DimensionEffects;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.dedicated.MinecraftDedicatedServer;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.random.Random;
+import net.minecraft.world.ServerWorldAccess;
+import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -13,9 +20,11 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 @Mixin(LivingEntity.class)
 public abstract class MixinTakeDamage {
-    @Shadow public abstract boolean hasStatusEffect(StatusEffect effect);
+    @Shadow
+    public abstract boolean hasStatusEffect(StatusEffect effect);
 
-    @Shadow public abstract Random getRandom();
+    @Shadow
+    public abstract Random getRandom();
 
     @ModifyVariable(method = "damage(Lnet/minecraft/entity/damage/DamageSource;F)Z", at = @At(value = "HEAD"), ordinal = 0, argsOnly = true)
     private float injected(float amount) {
@@ -24,8 +33,9 @@ public abstract class MixinTakeDamage {
                 amount *= 2;
             }
         }
-        if (MinecraftClient.getInstance().world != null) {
-            long nowTime = MinecraftClient.getInstance().world.getTimeOfDay();
+        World world = ((Entity) (Object) this).getWorld();
+        if (world != null) {
+            long nowTime = world.getTimeOfDay();
             if (this.hasStatusEffect(More_effect.EFFECT_SUN_BLESS) && 1000 <= nowTime && nowTime < 13000) {
                 amount -= 2;
             }
